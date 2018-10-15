@@ -23,6 +23,8 @@ func main() {
 	go bar()
 	fmt.Println("CPU\t\t", runtime.NumCPU())
 	fmt.Println("Go Routines\t", runtime.NumGoroutine())
+
+	regbar()
 	wg.Wait()
 }
 
@@ -38,4 +40,10 @@ func bar() {
 		fmt.Println("bar:", i)
 	}
 	wg.Done()
+}
+
+func regbar() {
+	for i := 0; i < 10; i++ {
+		fmt.Println("regbar:", i)
+	}
 }
