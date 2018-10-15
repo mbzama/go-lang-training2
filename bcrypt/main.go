@@ -14,11 +14,14 @@ func main() {
 		fmt.Println("Error while hashing password: ", err)
 	}
 
-	fmt.Println(paswd)
-	fmt.Println(bs)
-	fmt.Println(string(bs))
+	fmt.Println("Stored Password:", paswd)
+	fmt.Println("Hash of the password:", string(bs))
 
-	loginPwd := "password1230"
+	//Read password from user
+	fmt.Println("Enter the password")
+	var loginPwd string
+
+	fmt.Scan(&loginPwd)
 
 	err = bcrypt.CompareHashAndPassword(bs, []byte(loginPwd))
 	if err != nil {
