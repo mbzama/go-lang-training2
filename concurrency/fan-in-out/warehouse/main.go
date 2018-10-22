@@ -8,12 +8,14 @@ import (
 	"time"
 )
 
+//Item object holds the attributes
 type Item struct {
 	ID            int
 	Name          string
 	PackingEffort time.Duration
 }
 
+//PrepareItems adds the list of items for processing
 func PrepareItems(done <-chan bool) <-chan Item {
 	items := make(chan Item)
 
@@ -38,6 +40,7 @@ func PrepareItems(done <-chan bool) <-chan Item {
 	return items
 }
 
+//PackItems does the actual packaging stuff
 func PackItems(done <-chan bool, items <-chan Item) <-chan int {
 	packages := make(chan int)
 
